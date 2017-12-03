@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html ng-app="todo">
+<head>
+	<meta charset="UTF-8">
+	<title>待办事项</title>
+	<meta name="renderer" content="webkit"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="font/iconfont.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body ng-controller="todo-ctrl">
+	<div class="menu">
+		<div class="menu-title">
+			<a href="" class="logo no-select">
+				Todos
+			</a>
+			<a href="javascript:;" class="addcate"
+			ng-click="addShow=true"
+			>
+				<i class="iconfont">&#xe60c;</i>
+			</a>
+		</div>
+		<div class="menu-list">
+			<!-- 这是一个菜单 开始 -->
+			<div class="menu-item" 
+			ng-repeat="v in todos"
+			ng-click="changeIndex($index)"
+			ng-class="{'active':$index==idx}"
+			>
+				<h3 class="no-select">{{v.title}}</h3>
+				<span class="no-select">{{v.todo.length}}项</span>
+			</div>
+			<!-- 这是一个菜单 结束 -->
+		</div>
+	</div>
+	<div class="content">
+		<div class="content-title">
+			<h2 class="no-select"><span class="iconfont">&#xe675;</span>{{todos[idx].title}}</h2>
+			<a href="javascript:;" class="setting"
+			ng-click="edit()"
+			>
+				<span class="iconfont">&#xe7da;</span>
+			</a>
+		</div>
+		<div class="content-todo">
+			<div class="todo">
+				<div class="title">
+					<span class="iconfont arr no-select"
+					ng-class="{active:doneShow}"
+					ng-click="doneShowFn()"
+					>&#xe600;</span>
+					<h3>已完成 {{(todos[idx].todo | filter:{done:true}).length}} 项</h3>
+				</div>
+				<ul class="list" ng-show="doneShow">
+					<li ng-repeat="v in todos[idx].todo | filter:{done:true}">
+						<div class="select">
+							<input type="checkbox"
+							ng-click="v.done=false"
+							checked
+							>
+						</div>
+						<p>{{v.title}}</p>
+						<span class="iconfont del"
+						ng-click="delTodo(v.id)"
+						>
+							&#xe6db;
+						</span>
+					</li>
+				</ul>
+			</div>
+			<div class="todo">
+				<div class="title">
+					<span class="iconfont arr no-select"
+					ng-class="{active:doingShow}"
+					ng-click="doingShowFn()"
+					>&#xe600;</span><h3>正在进行 {{(todos[idx].todo | filter:{done:false}).length}} 项</h3>
+				</div>
+				<ul class="list" ng-show="doingShow">
+					<li ng-repeat="v in todos[idx].todo | filter:{done:false}">
+						<div class="select">
+							<input type="checkbox"
+							ng-click="v.done=true">
+						</div>
+						<p contenteditable
+						ng-blur="changeTodoTitle($event,v)"
+						ng-bind="v.title"
+						></p>
+						<span class="iconfont del"
+						ng-click="delTodo(v.id)"
+						>
+							&#xe6db;
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<span class="iconfont add-todo no-select"
+		ng-click="addTodo()"
+		>&#xe60c;</span>
+	</div>
+
+	<div class="todo-tips" ng-show="addShow">
+		<div class="tips-title">
+			<span class="iconfont">&#xe675;</span>
+			添加分类
+		</div>
+		<div class="tips-content">
+			<input type="text"
+			ng-model="addTitle"
+			>
+		</div>
+		<div class="tips-group">
+			<div class="cancel"
+			ng-click="cancel()"
+			>
+				取消
+			</div>
+			<div class="done"
+			ng-click="done()"
+			>
+				确定
+			</div>
+		</div>
+	</div>
+
+	<div class="todo-tips" ng-show="editShow">
+		<div class="tips-title">
+			<span class="iconfont">&#xe675;</span>
+			编辑分类
+		</div>
+		<div class="tips-content">
+			<input type="text"
+			ng-model="editTitle"
+			>
+		</div>
+		<div class="tips-group">
+			<div class="cancel"
+			ng-click="editcancel()"
+			>
+				取消
+			</div>
+			<div class="done"
+			ng-click="editdone()"
+			>
+				确定
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+body,h1,h2,h3,h4,h5,h6,p,figure{
+	margin:0;
+}
+body{
+	font-family:'Helvetica Neue',Helvetica,Arial,'Microsoft Yahei','Hiragino Sans GB','Heiti SC','WenQuanYi Micro Hei',sans-serif;
+}
+ul,ol{
+	padding:0;
+	margin:0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border:0;
+}
+
+.no-select{
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	-moz-user-select:none;
+	user-select:none;
+}
+
+p::selection,
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+h6::selection{
+	background-color:#18A15F;
+	color:#fff;
+}
+p::-moz-selection,
+h1::-moz-selection,
+h2::-moz-selection,
+h3::-moz-selection,
+h4::-moz-selection,
+h5::-moz-selection,
+h6::-moz-selection{
+	background-color:#18A15F;
+	color:#fff;
+}

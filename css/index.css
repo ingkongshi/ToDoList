@@ -1,0 +1,264 @@
+html,body{
+	height:100%;
+	overflow:hidden;
+}
+body{
+	display:flex;
+}
+.menu{
+	height:100%;
+	width:240px;
+	display:flex;
+	flex-direction:column;
+	flex-shrink:0;
+}
+.menu .menu-title{
+	background:#4C8CF5;
+	height:60px;
+}
+.menu .menu-title .logo{
+	float:left;
+	width:60px;
+	height:60px;
+	line-height:60px;
+	font-size:28px;
+	color:#fff;
+	padding-left:10px;
+}
+.menu .menu-title .logo img{
+	height:100%;
+}
+.menu .menu-title .addcate{
+	float:right;
+	width:50px;
+	height:50px;
+	margin:5px;
+	text-align:center;
+}
+.menu .menu-title .addcate i{
+	line-height:50px;
+	font-size:30px;
+	color:#fff;
+	transition:color .2s;
+}
+.menu .menu-title .addcate i:hover{
+	color:rgba(255,255,255,.5);
+}
+.menu .menu-list{
+	flex-grow:1;
+	overflow-y:auto;
+	border-right:1px solid #ccc;
+}
+
+.menu .menu-list .menu-item{
+	width:50%;
+	height:120px;
+	float:left;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	box-sizing:border-box;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	transition:all .3s;
+}
+.menu .menu-list .menu-item:nth-child(2n){
+	border-right:0;
+}
+.menu .menu-list .menu-item:hover{
+	background:#eee;
+}
+.menu .menu-list .menu-item.active{
+	background:#8cbfff;
+	color:#fff;
+}
+.menu .menu-list .menu-item h3{
+	width:100%;
+	font-size:20px;
+	text-align:center;
+	font-weight:normal;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow:hidden;
+}
+.menu .menu-list .menu-item span{
+	font-size:14px;
+}
+
+
+
+/* todo 右侧开始 */
+.content{
+	height:100%;
+	background:#f6f6f6;
+	flex-grow:1;
+	display:flex;
+	flex-direction:column;
+}
+.content-title{
+	height:60px;
+	background:#4C8CF5;
+}
+.content-title h2{
+	float:left;
+	height:100%;
+	line-height:60px;
+	font-size:24px;
+	font-weight:normal;
+	color:#fff;
+	margin-left:15px;
+}
+.content-title h2 span{
+	font-size:24px;
+	margin-right:10px;
+}
+.content-title .setting{
+	float:right;
+	height:60px;
+	margin-right:15px;
+}
+.content-title .setting span{
+	line-height:60px;
+	text-align:center;
+	font-size:30px;
+	color:#fff;
+	transition:color .2s;
+}
+.content-title .setting span:hover{
+	color:rgba(255,255,255,.3);
+}
+.content-todo{
+	flex-grow:1;
+	overflow-y:auto ;
+}
+.content .todo{
+	margin:15px 0;
+	background:#ddd;
+	box-shadow:0 0 1px #ccc;
+}
+.content .todo .title{
+	height:50px;
+	line-height:50px;
+	background:#fff;
+	border-bottom:1px solid rgba(76, 140, 245, 0.3);;
+}
+.content .todo .title .arr{
+	width:50px;
+	height:50px;
+	float:left;
+	text-align:center;
+	font-size:24px;
+	color:#4C8CF5;
+	transition:all .3s;
+	transform:rotate(0deg);
+}
+.content .todo .title .arr.active{
+	transform:rotate(90deg);
+}
+.content .todo .title h3{
+	float:left;
+	font-size:18px;
+	font-weight:normal;
+	color:#555;
+}
+.content .todo .list li{
+	height:45px;
+	line-height:45px;
+	display:flex;
+	background:#fff;
+	border-bottom:1px solid #eee;
+}
+.content .todo .list li:last-child{
+	border-bottom:0;
+}
+.content .todo .list li .select{
+	width:45px;
+	height:45px;
+}
+.content .todo .list li .select input{
+	width:25px;
+	height:25px;
+	margin:10px;
+}
+.content .todo .list p{
+	flex-grow:1;
+}
+.content .todo .list li .del{
+	width:45px;
+	height:45px;
+	font-size:24px;
+	color:#4C8CF5;
+	cursor: pointer;
+}
+.content .add-todo{
+	width:50px;
+	height:50px;
+	position: fixed;
+	background:#4C8CF5;
+	color:#fff;
+	bottom:20px;
+	right:20px;
+	border-radius:50%;
+	text-align:center;
+	line-height:50px;
+	font-size:20px;
+	cursor: pointer;
+}
+/* todo 右侧结束 */
+
+
+.todo-tips{
+	width:360px;
+	height:280px;
+	background:#fff;
+	box-shadow:0 0 10px #ccc;
+	position: absolute;
+	z-index: 999;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+.todo-tips .tips-title{
+	height:50px;
+	background:#4C8CF5;
+	line-height:50px;
+	color:#fff;
+	font-size:20px;
+	padding-left:20px;
+}
+.todo-tips .tips-content{
+	padding:30px 20px;
+}
+.todo-tips .tips-content input{
+	width:100%;
+	height:30px;
+	font-size:20px;
+	color:#666;
+}
+.todo-tips .tips-group{
+	position: absolute;
+	height:80px;
+	width:100%;
+	bottom:0;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.todo-tips .tips-group div{
+	height:36px;
+	line-height:36px;
+	padding:0 20px;
+	color:#fff;
+	border-radius:10px;
+	cursor: pointer;
+}
+.todo-tips .tips-group .cancel{
+	background:#DE5145;
+	margin-right:20px;
+}
+.todo-tips .tips-group .done{
+	background:#1BA261;
+}
